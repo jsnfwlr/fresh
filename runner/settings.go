@@ -18,7 +18,7 @@ const (
 )
 
 var settings = map[string]string{
-	"config_path":       "./runner.conf",
+	"config_path":       "./refresh.conf",
 	"root":              ".",
 	"tmp_path":          "./tmp",
 	"build_name":        "runner-build",
