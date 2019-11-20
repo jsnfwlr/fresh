@@ -87,8 +87,8 @@ func init() {
 
 func initLogFuncs() {
 	mainLog = newLogFunc("main")
-	watcherLog = newLogFunc("watcher")
-	runnerLog = newLogFunc("runner")
+	watcherLog = newLogFunc("watch")
+	runnerLog = newLogFunc("run")
 	buildLog = newLogFunc("build")
 	appLog = newLogFunc("app")
 }
