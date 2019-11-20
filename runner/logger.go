@@ -17,7 +17,7 @@ func newLogFunc(prefix string) func(string, ...interface{}) {
 		color = fmt.Sprintf("\033[%sm", logColor(prefix))
 		clear = fmt.Sprintf("\033[%sm", colors["reset"])
 	}
-	prefix = fmt.Sprintf("%-11s", prefix)
+	prefix = fmt.Sprintf("%-6s", prefix)
 
 	return func(format string, v ...interface{}) {
 		format = fmt.Sprintf("%s %s |%s %s", color, prefix, clear, format)
