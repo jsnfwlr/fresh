@@ -15,7 +15,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/jsnfwlr/fresh/runner"
+	"github.com/jsnfwlr/refresh/runner"
 	"os"
 )
 

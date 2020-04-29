@@ -47,8 +47,19 @@ func isWatchedFile(path string) bool {
 
 	ext := filepath.Ext(path)
 
-	for _, e := range strings.Split(settings["valid_ext"], ",") {
-		if strings.TrimSpace(e) == ext {
+	for _, valid_ext := range strings.Split(settings["valid_ext"], ",") {
+		if strings.TrimSpace(valid_ext) == ext {
+			return true
+		}
+	}
+
+	return false
+}
+
+func isExcludedFile(path string) bool {
+	for _, ignored_ext := range strings.Split(settings["no_rebuild_ext"], ",") {
+		ignored_ext = strings.TrimSpace(ignored_ext)
+		if strings.HasSuffix(path, ignored_ext) {
 			return true
 		}
 	}
@@ -57,10 +68,10 @@ func isWatchedFile(path string) bool {
 }
 
 func shouldRebuild(eventName string) bool {
-	for _, e := range strings.Split(settings["no_rebuild_ext"], ",") {
-		e = strings.TrimSpace(e)
+	for _, ignored_ext := range strings.Split(settings["no_rebuild_ext"], ",") {
+		ignored_ext = strings.TrimSpace(ignored_ext)
 		fileName := strings.Replace(strings.Split(eventName, ":")[0], `"`, "", -1)
-		if strings.HasSuffix(fileName, e) {
+		if strings.HasSuffix(fileName, ignored_ext) {
 			return false
 		}
 	}
